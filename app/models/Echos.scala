@@ -17,7 +17,7 @@ object Echo {
   }
 
   def all(): List[Echo] = DB.withConnection { implicit c =>
-    SQL("select * from echo").as(echo *)
+    SQL("select * from echo order by id desc").as(echo *)
   }
 
   def create(message: String) {
@@ -28,12 +28,11 @@ object Echo {
     }
   }
 
-  def delete(id: Long) {
+  def deleteOld(id: Long) {
     DB.withConnection { implicit c =>
-      SQL("delete from echo where id = {id}").on(
+      SQL("delete from echo where id <= {id}").on(
         'id -> id
       ).executeUpdate()
     }
   }
-
 }

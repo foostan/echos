@@ -1,6 +1,5 @@
 @(echos: List[Echo], echoForm: Form[String])
 
-    @import helper._
     @main("Echos") {
         <h1>@echos.size echo(s)</h1>
         <ul>
@@ -10,9 +9,4 @@
             </li>
         }
         </ul>
-        <h2>Add a new echo</h2>
-        @form(routes.Application.newEcho) {
-            @inputText(echoForm("message"))
-            <input type="submit" value="Create">
-        }
     }
