@@ -6,9 +6,13 @@ import play.api.data.Forms._
 import play.api.libs.json._
 
 import models.Echo
+import models.EchoForm
 
 object Api1_0 extends Controller {
-  val echoForm = Form("message" -> nonEmptyText)
+  val echoForm = Form(
+    mapping(
+      "message" -> nonEmptyText,
+      "number" -> number)(EchoForm.apply)(EchoForm.unapply))
 
   def echos = Action {
     Ok(Json.obj("echos" -> Json.toJson(Echo.all().map { t => t.message} toList)))
@@ -17,10 +21,10 @@ object Api1_0 extends Controller {
   def newEcho = Action { implicit request =>
     echoForm.bindFromRequest.fold(
       errors => BadRequest(Json.obj("errors" -> List(Map("message" -> "Bad Request")))),
-      message => {
+      values => {
         val echoList = (Echo.all().map { t => t.message} toList)
         Echo.deleteAll()
-        Echo.create(message)
+        Echo.create(values.message)
         Ok(Json.obj("echos" -> Json.toJson(echoList)))
       }
     )
