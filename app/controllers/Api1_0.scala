@@ -12,7 +12,7 @@ object Api1_0 extends Controller {
   val echoForm = Form(
     mapping(
       "message" -> nonEmptyText,
-      "number" -> number)(EchoForm.apply)(EchoForm.unapply))
+      "number" -> default(number, 10))(EchoForm.apply)(EchoForm.unapply))
 
   def echos = Action {
     Ok(Json.obj("echos" -> Json.toJson(Echo.all().map { t => t.message} toList)))
