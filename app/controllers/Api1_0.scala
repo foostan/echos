@@ -18,8 +18,10 @@ object Api1_0 extends Controller {
     echoForm.bindFromRequest.fold(
       errors => BadRequest(Json.obj("errors" -> List(Map("message" -> "Bad Request")))),
       message => {
+        val echoList = (Echo.all().map { t => t.message} toList)
+        Echo.deleteAll()
         Echo.create(message)
-        Ok(Json.obj("echos" -> Json.toJson(Echo.all().map { t => t.message} toList)))
+        Ok(Json.obj("echos" -> Json.toJson(echoList)))
       }
     )
   }

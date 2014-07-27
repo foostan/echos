@@ -28,11 +28,9 @@ object Echo {
     }
   }
 
-  def deleteOld(id: Long) {
+  def deleteAll() {
     DB.withConnection { implicit c =>
-      SQL("delete from echo where id <= {id}").on(
-        'id -> id
-      ).executeUpdate()
+      SQL("delete from echo where 1").executeUpdate()
     }
   }
 }
