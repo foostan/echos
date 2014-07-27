@@ -12,7 +12,7 @@ object Echo {
   val echo = {
     get[Long]("id") ~
       get[String]("message") map {
-      case id~label => Echo(id, label)
+      case id ~ label => Echo(id, label)
     }
   }
 
@@ -28,9 +28,14 @@ object Echo {
     }
   }
 
-  def deleteAll() {
-    DB.withConnection { implicit c =>
-      SQL("delete from echo where 1").executeUpdate()
+  def purge(number: Int) {
+    val echoList = all()
+    if (echoList.size > number) {
+      DB.withConnection { implicit c =>
+        SQL("delete from echo where id <= ({id})").on(
+          "id" -> echoList (number).id
+        ).executeUpdate()
+      }
     }
   }
 }

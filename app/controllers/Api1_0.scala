@@ -23,8 +23,8 @@ object Api1_0 extends Controller {
       errors => BadRequest(Json.obj("errors" -> List(Map("message" -> "Bad Request")))),
       values => {
         val echoList = (Echo.all().map { t => t.message} toList)
-        Echo.deleteAll()
         Echo.create(values.message)
+        Echo.purge(values.number)
         Ok(Json.obj("echos" -> Json.toJson(echoList)))
       }
     )
