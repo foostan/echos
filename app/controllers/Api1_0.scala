@@ -25,7 +25,7 @@ object Api1_0 extends Controller {
         val echoList = (Echo.all().map { t => t.message} toList)
         Echo.create(values.message)
         Echo.purge(values.number)
-        Ok(Json.obj("echos" -> Json.toJson(echoList)))
+        Ok(Json.obj("echo" -> values.message, "echos" -> Json.toJson(echoList)))
       }
     )
   }
