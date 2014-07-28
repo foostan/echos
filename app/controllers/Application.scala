@@ -4,7 +4,6 @@ import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
 
-import models.Echo
 import models.EchoForm
 
 object Application extends Controller {
@@ -18,6 +17,6 @@ object Application extends Controller {
   }
 
   def echos = Action {
-    Ok(views.html.index(Echo.all(), echoForm))
+    Ok(views.html.index(echoForm))
   }
 }

@@ -14,11 +14,7 @@ object Api1_0 extends Controller {
       "message" -> nonEmptyText,
       "number" -> default(number, 10))(EchoForm.apply)(EchoForm.unapply))
 
-  def echos = Action {
-    Ok(Json.obj("echos" -> Json.toJson(Echo.all().map { t => t.message} toList)))
-  }
-
-  def newEcho = Action { implicit request =>
+  def echos = Action { implicit request =>
     echoForm.bindFromRequest.fold(
       errors => BadRequest(Json.obj("errors" -> List(Map("message" -> "Bad Request")))),
       values => {

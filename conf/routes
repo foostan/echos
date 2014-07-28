@@ -4,8 +4,7 @@
 
 GET         /                     controllers.Application.index
 GET         /echos                controllers.Application.echos
-GET         /api/1.0/echos        controllers.Api1_0.echos
-POST        /api/1.0/echos        controllers.Api1_0.newEcho
+POST        /api/1.0/echos        controllers.Api1_0.echos
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file         controllers.Assets.at(path="/public", file)

@@ -8,7 +8,6 @@ import play.api.db._
 case class Echo(id: Long, message: String)
 
 object Echo {
-
   val echo = {
     get[Long]("id") ~
       get[String]("message") map {
@@ -33,7 +32,7 @@ object Echo {
     if (echoList.size > number) {
       DB.withConnection { implicit c =>
         SQL("delete from echo where id <= ({id})").on(
-          "id" -> echoList (number).id
+          "id" -> echoList(number).id
         ).executeUpdate()
       }
     }

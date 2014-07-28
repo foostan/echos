@@ -1,12 +1,4 @@
-@(echos: List[Echo], echoForm: Form[models.EchoForm])
+@(echoForm: Form[models.EchoForm])
 
     @main("Echos") {
-        <h1>@echos.size echo(s)</h1>
-        <ul>
-        @echos.map { echo =>
-            <li>
-                @echo.message
-            </li>
-        }
-        </ul>
     }
