@@ -1,16 +1,30 @@
 @(echoForm: Form[models.EchoForm])
 @main("Echos") {
-    <h1 class="page-header">Echos</h1>
-    <form class="form" role="form" action="./">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Say something" />
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-bullhorn"></span></button>
-                    </span>
+    <div class="echo-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h1 class="inverse-page-header">echos</h1>
+                    <form class="form" role="form" action="./">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Say something" />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-bullhorn"></span></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </form>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+            </div>
+        </div>
+    </div>
 }

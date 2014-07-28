@@ -1,0 +1,20 @@
+body {
+    background-color: #f5f5f5;
+}
+
+.echo-form {
+    padding: 40px;
+    background-color: #222222;
+}
+
+.inverse-page-header {
+    color: #f5f5f5;
+}
+
+.echo-form .form-control {
+    height: 64px;
+}
+
+.echo-form .btn {
+    height: 64px;
+}
