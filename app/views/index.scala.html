@@ -9,9 +9,9 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Say something" />
+                                    <input id="post-message" type="text" class="form-control" placeholder="Say something" required>
                                     <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-bullhorn"></span></button>
+                                        <button id="post-btn" class="btn btn-default" type="button"><span class="glyphicon glyphicon-bullhorn"></span></button>
                                     </span>
                                 </div>
                             </div>
@@ -24,7 +24,18 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
+                <div id="echo-result" class="panel panel-default">
+                    <div class="panel-heading">echo</div>
+                    <table class="table">
+                    </table>
+                </div>
+                <div id="echos-result" class="panel panel-default">
+                    <div class="panel-heading">echos</div>
+                    <table class="table">
+                    </table>
+                </div>
             </div>
         </div>
     </div>
+    <script src="@routes.Assets.at("js/main.js")"></script>
 }
