@@ -1,7 +1,6 @@
 (function () {
-    $("#post-btn").on("click", function () {
+    function echo () {
         var message = $("#post-message").val();
-
         $.ajax({
             type: "POST",
             url: "/api/1.0/echos",
@@ -17,5 +16,16 @@
                 });
             }
         });
+    }
+
+    $("#post-message").keydown(function(e) {
+        if (e.keyCode == 13) {
+            echo();
+            return false;
+        }
+    });
+
+    $("#post-btn").on("click", function () {
+        echo();
     });
 })();
