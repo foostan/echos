@@ -9,8 +9,6 @@
                 number: 10
             },
             success: function (data) {
-
-
                 $("#result").children().remove();
                 var $echo_result = $('<div class="panel panel-default"></div>')
                     .append('<div class="panel-heading">echo</div>')
@@ -27,8 +25,6 @@
 
                 $("#result").append($echo_result);
                 $("#result").append($echos_result);
-
-
             }
         });
     }
