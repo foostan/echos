@@ -103,3 +103,10 @@ $ curl -s -X POST -d "message=echo10" localhost:9000/api/1.0/echos | jq .
   "echo": "echo10"
 }
 ```
+
+## Run on Docker
+```
+$ activator clean compile stage
+$ docuker build -t echos .
+$ docker run -p 9000 -d echos
+```
